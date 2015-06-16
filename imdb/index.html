@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>OMDB Api Client</title>
+    <link rel="stylesheet" href="styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" type="text/javascript"></script>
+    <script src="scripts/app.js" type="text/javascript"></script>
+    <script src="scripts/lib/bindonce.min.js"></script>
+    <script src="scripts/controllers/movieController.js" type="text/javascript"></script>
+</head>
+    <body>
+        <div id="wrapper" ng-app="imdbApp">
+            <div ng-controller="movieController" class="container-fluid">
+                <h3>OMDB (IMDB) Api client</h3>
+                <div class="search-container row-fluid">
+                    <div class="span3">
+                        <form class="form form-search">
+                            <input class="input-large" type="text" ng-model="query" />
+                            <button class="btn btn-navbar" ng-click="searchIMDB()">Search</button>
+                        </form>
+                    </div>
+                    <div class="span9">
+                        <label id="filter-year">Filter by year</label>
+                        <select id="filter-select" class="form-control" ng-model="selectedYear" ng-options="movie.Year for movie in movies"></select>
+                    </div>
+                </div>
+                <div id="info-container" class="row-fluid">
+                    <div id="results-container" class="span6" ng-include src='"./partials/results.html"' ng-show="showMovieResults">
+                    </div>
+                    <div id="details-container" class="span6" ng-include src='"./partials/details.html"' ng-show="showMovieDetails">
+                    </div> 
+                </div>
+                <div id="error-container">
+                    <span>{{error}}</span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
