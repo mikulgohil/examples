@@ -1,0 +1,38 @@
+﻿body {
+    padding: 20px;
+    font-family: Helvetica Neue, sans-serif;
+}
+
+h3 {
+    margin-left: 0px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+#filter-year {
+    display: inline-block;
+    font-size: 14px;
+    padding-right: 5px;
+}
+
+#filter-select {
+    margin-bottom: 0px;
+}
+
+#details-container .title {
+    font-weight: bold;
+}
+
+#details-container #info-column > div {
+    margin: 10px 5px;
+}
+
+#results-container table tbody tr:hover {
+    background: #d3d3d3;
+}
+
+#results-container table tbody tr td:first-child {
+
+    cursor: pointer;
+}
+
