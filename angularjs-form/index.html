@@ -2,7 +2,27 @@
 <html ng-app>
     <head><title>AngularJS Form Validation</title>
         <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
-        
+        <script>
+            function Ctrl($scope) {
+                $scope.m_word = 'guest';
+                $scope.word = /^\s*\w*\s*$/;
+                $scope.m_url = 'http://devzone.co.in';
+                $scope.ph_numbr = /^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/;
+            }
+
+        </script>
+        <style>
+            .main{
+                margin: 10px auto;
+                width:350px;
+                border: 1px solid #ccc;
+                padding: 20px;	
+            }
+            .error{
+                color:red;	
+            }
+
+        </style>
     </head>
     <body>
         <div class='main'>
