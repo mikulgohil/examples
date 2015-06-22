@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Event Bubbling </title>
+        <meta name="description" content="">
+
+        <style type="text/css">
+			
+        </style>
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    </head>
+    <body>
+        
+<h3>Please open Chrome console and click element3</h3>
+<div class="element1">element1
+    <div class="element2">element2
+        <div class="element3">element3</div>
+    </div>     
+</div>
+
+
+
+        <script type="text/javascript">
+
+var element1 = document.getElementsByClassName('element1')[0],
+     element2 = document.getElementsByClassName('element2')[0],
+     element3 = document.getElementsByClassName('element3')[0],
+     foo = function(e) { console.log(this.className); },
+     stop = function(e) { 
+         console.log('stop', this.className); 
+         e.stopPropagation();
+     };
+
+ element1.addEventListener('click', foo); // bubbling
+ element1.addEventListener('click', foo, true); // caputring
+ // You cab change handler to "stop"
+ element2.addEventListener('click', foo); 
+ element2.addEventListener('click', foo, true);
+ element3.addEventListener('click', foo);
+ element3.addEventListener('click', foo, true);
+        </script>
+    </body>
+</html>
