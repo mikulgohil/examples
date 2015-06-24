@@ -76,9 +76,15 @@
 					if(xhr.readyState === 4 && xhr.status === 200){
 						// Success
 						var data = JSON.parse(xhr.responseText);
-						document.getElementById('ajax').innerHTML = data[0].name;
+						var staticHTML = '<ul class="list">'
+						for (var i = 0; i < data.length; i++) {
+							 staticHTML += '<li>' + data[i].name +' : '+ data[i].location + '</li>';
+						};
+						staticHTML += '<ul>';
+						document.getElementById('ajax').innerHTML = staticHTML;
+
 					}else if(xhr.status === 404){
-						// Error file not found
+							// Error file not found
 						document.getElementById('ajax').innerHTML = "Error";
 					}else{
 						document.getElementById('ajax').innerHTML = xhr.statusText;
