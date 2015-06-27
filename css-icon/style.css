@@ -1,35 +1,12 @@
-/* Styles go here */
 
-/* SECTION: Social Buttons Start */
-
-      * {
-  margin: 0;
-  padding: 0;
-  color: inherit;
-  box-sizing: inherit;
+.container{
+  position: relative;
 }
-*:focus {
-  outline: none;
-}
-
-html {
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #ecf0f1;
-}
-
 .social-buttons {
-  height: 90px;
-  margin: auto;
-  font-size: 0;
-  text-align: center;
+  
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  top:250px;
+  left: 25%;
 }
 
 .social-button {
@@ -114,6 +91,3 @@ body {
 .social-button:focus {
   opacity: .85;
 }
-
-
-/* SECTION: Social Buttons Finish */

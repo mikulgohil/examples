@@ -11,7 +11,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
  <!-- load bootstrap and fontawesome via CDN -->
-      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" />
+    <style type="text/css">
+        .top-buffer{
+            margin: 10px 0;
+        }
+    </style>
         
     </head>
     <body ng-controller="mainController">
@@ -43,6 +48,8 @@
     <!-- MAIN CONTENT AND INJECTED VIEWS -->
     <div id="main">
     <div class="container">
+      <h1><span><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/15309/angular-logo.svg" alt="Angular.js Logo" /></span> Angular.js Routing</h1>
+
          <!-- angular templating -->
         <!-- this is where content will be injected -->
         <div ng-view></div>
@@ -55,5 +62,8 @@
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
           <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+
     <script src="app.js"></script>
+    <script src="service.js"></script>
+
 </html>

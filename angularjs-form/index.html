@@ -1,58 +1,60 @@
 <!doctype html>
 <html ng-app>
-    <head><title>AngularJS Form Validation</title>
-        <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
-        <script>
-            function Ctrl($scope) {
-                $scope.m_word = 'guest';
-                $scope.word = /^\s*\w*\s*$/;
-                $scope.m_url = 'http://devzone.co.in';
-                $scope.ph_numbr = /^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/;
-            }
 
-        </script>
-        <style>
-            .main{
-                margin: 10px auto;
-                width:350px;
-                border: 1px solid #ccc;
-                padding: 20px;	
-            }
-            .error{
-                color:red;	
-            }
+<head>
+    <title>AngularJS Form Validation</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" />
+    <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+    <script>
+    function Ctrl($scope) {
+        $scope.m_word = 'guest';
+        $scope.word = /^\s*\w*\s*$/;
+        $scope.m_url = 'http://mikul.in';
+        $scope.ph_numbr = /^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/;
+    }
+    </script>
+    <style>
+    </style>
+</head>
 
-        </style>
-    </head>
-    <body>
-        <div class='main'>
-            <h2>AngularJS Form Validation</h2>
-            <form name="myForm" ng-controller="Ctrl">
-                <table>
-                    <tr><td>Username</td><td> <input type="text" name="s_word" ng-model="m_word" ng-pattern="word" required ng-trim="false">
-                            <span class="error" ng-show="myForm.s_word.$error.required">Required!</span>
-                            <span class="error" ng-show="myForm.s_word.$error.pattern">Single word only!</span>
-                        </td></tr>
-
-                    <tr><td>	URL</td><td> <input type="url" name="in_url" ng-model="m_url" required>
-                            <span class="error" ng-show="myForm.in_url.$error.required">Required!</span>
-                            <span class="error" ng-show="myForm.in_url.$error.url">Not valid url!</span>
-                        </td></tr>
-
-                    <tr><td>Email </td><td><input type="email" placeholder="Email" name="email" ng-model="m_email" ng-minlength=3 ng-maxlength=20 required />
-                            <span class="error" ng-show="myForm.email.$error.required">Required!</span>
-                            <span class="error" ng-show="myForm.email.$error.minlength">Not less that 3 char</span>
-                            <span class="error" ng-show="myForm.email.$error.email">Invalid Email!</span>
-                        </td></tr>
-
-                    <tr><td>
-                            Phone</td><td> <input type="text" placeholder="33-333-33333" name="phone" ng-pattern="ph_numbr" ng-model="m_phone" />
-                            <span class="error" ng-show="myForm.phone.$error.required">Required!</span>
-                            <span class="error" ng-show="myForm.phone.$error.minlength">Not less that 10 char</span>
-                            <span class="error" ng-show="myForm.phone.$error.maxlength">Not More than 11 char</span>
-                            <span class="error" ng-show="myForm.phone.$error.pattern">Pls Match Pattern [+12-236-23658 or 12-236-23658 ]</span>
-                        </td></tr>  
-            </form>
+<body>
+    <div class='container'>
+        <div class="row">
+        <div class="col-md-12">
+        <h2>AngularJS Form Validation</h2>
+        <form name="myForm" ng-controller="Ctrl">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" name="s_word" ng-model="m_word" ng-pattern="word" required ng-trim="false">
+                <span class="text-danger" ng-show="myForm.s_word.$error.required">Required!</span>
+                <span class="text-danger" ng-show="myForm.s_word.$error.pattern">Single word only!</span>
+            </div>
+            <div class="form-group">
+                <label for="URL">URL</label>
+                <input type="url" id="URL" class="form-control" name="in_url" ng-model="m_url" required>
+                <span class="text-danger" ng-show="myForm.in_url.$error.required">Required!</span>
+                <span class="text-danger" ng-show="myForm.in_url.$error.url">Not valid url!</span>
+            </div>
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input id="Email" class="form-control" type="email" placeholder="Email" name="email" ng-model="m_email" ng-minlength=3 ng-maxlength=20 required />
+                <span class="text-danger" ng-show="myForm.email.$error.required">Required!</span>
+                <span class="text-danger" ng-show="myForm.email.$error.minlength">Not less that 3 char</span>
+                <span class="text-danger" ng-show="myForm.email.$error.email">Invalid Email!</span>
+            </div>
+            <div class="form-group">
+                <label for="Phone">
+                    Phone</label>
+                <input type="text" id="Phone" class="form-control" placeholder="33-333-33333" name="phone" ng-pattern="ph_numbr" ng-model="m_phone" />
+                <span class="text-danger" ng-show="myForm.phone.$error.required">Required!</span>
+                <span class="text-danger" ng-show="myForm.phone.$error.minlength">Not less that 10 char</span>
+                <span class="text-danger" ng-show="myForm.phone.$error.maxlength">Not More than 11 char</span>
+                <span class="text-danger" ng-show="myForm.phone.$error.pattern">Pls Match Pattern [+12-236-23658 or 12-236-23658 ]</span>
+            </div>
+        </form>
         </div>
-    </body>
+        </div>
+    </div>
+</body>
+
 </html>

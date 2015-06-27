@@ -1,7 +1,7 @@
 ﻿var app = angular.module("imdbApp", []);
 
 app.config(function($httpProvider) {
-    //delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
 });
 
 ////app.filter('unique', function () {

@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html class="no-js">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,36 +7,35 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
-		<link rel=stylesheet href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" />
     </head>
     <body>
-        
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Ajax example</a>
-        </div>
-        
-      </div>
-    </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+      <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">Flicker</a>
+          
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html">Vanilla JS</a></li>
+            <li><a href="jquery.html">jQuery</a></li>
+            <li><a href="flickr.html">Flickr</a></li>
+          </ul>
 
+        </div>
+      </div>
+    </div>
+
+        <h1>Hello, world!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.</p>
       </div>
       
     </div>
@@ -47,14 +43,10 @@
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-md-4">
-        <input type="text" class="inputValue">
+        <div class="col-md-12">
+        <input type="text" class="inputValue"><button class="btn btn-default" onclick="sendAJAX()" role="button">Get Feed &raquo;</button>
       		<div id="ajax">
-	      		<ul>
-	      		    <li></li>
-	      		</ul>
 	        </div>
-	        <p><button class="btn btn-primary btn-lg" onclick="sendAJAX()" role="button">Send &raquo;</button></p>    
         </div>
       </div>
 
@@ -89,17 +81,17 @@
           var text = $('.inputValue').val();
 
           var flickerOptions = {
-            tag : 'animal',
             format : 'json'
           }
 
           function displayPhotos(data){
-              var photoHTML = '<ul>';
+              var photoHTML = '<div class="row">';
               $.each(data.items,function(i,item){
-                  photoHTML += '<li>'+ item.title + '</li>';
-                  photoHTML +=  '<img src="' + item.media.m + '" />';
+                  photoHTML += '<div class="col-md-3">';
+                  photoHTML +=  '<img class="img-rounded" style="max-height:140px; max-width:140px" src="' + item.media.m + '" />';
+                  photoHTML += '</div>'
               })
-              photoHTML += '</ul>';
+              photoHTML += '</div>';
               $('#ajax').html(photoHTML);
           }
 

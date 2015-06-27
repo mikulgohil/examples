@@ -1,73 +1,94 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Event Bubbling </title>
-        <meta name="description" content="">
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Event Bubbling </title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+    <meta name="description" content="">
+    <style type="text/css">
+    body {
+      background-color: #2b3e50;
+      font-family: 'Lato', sans-serif;
+    }
+    .container{
+      width: 500px;
+      margin: 0 auto;
+    }
+    h1{
+      
+      font-weight: 300;
+      font-size: 28px;
+      color: #fff;
+      display: block;
+    }
+    .alert{
+      color: #d9534f;
+    }
+    .element1 {
+        background-color: #1a3045;
+        height: 160px;
+        width: 400px;
+        cursor: pointer;
+        color: #fff;
+        padding: 5px 10px;
+    }
+    
+    .element2 {
+        background-color: #0e2439;
+        height: 80px;
+        width: 300px;
+        position: relative;
+        top: 20px;
+        left: 50px;
+        color: #fff;
+        padding: 5px 10px;
+    }
+    
+    .element3 {
+        background-color: #08131e;
+        height: 30px;
+        width: 200px;
+        position: relative;
+        top: 10px;
+        left: 50px;
+        color: #fff;
+        padding: 5px 10px;
+    }
+    </style>
+</head>
 
-        <style type="text/css">
-			.element1 {
-  background-color: #b0c4de;
-  height: 160px;
-  width: 400px;
-  cursor: pointer;
-}
+<body>
 
-.element2 {
-  background-color: pink;
-  height: 80px;
-  width: 300px;
-  position: relative;
-  top: 20px;
-  left: 50px;
+  <div class="container">
+    <h1>Event Bubbling</h1>
+    <p class="alert">Please open Chrome console and click element3</p>
+    <div class="element1">Element1
+        <div class="element2">Element2
+            <div class="element3">Element3</div>
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript">
+    var element1 = document.getElementsByClassName('element1')[0],
+        element2 = document.getElementsByClassName('element2')[0],
+        element3 = document.getElementsByClassName('element3')[0],
+        foo = function(e) {
+            console.log(this.className);
+        },
+        stop = function(e) {
+            console.log('stop', this.className);
+            e.stopPropagation();
+        };
 
-}
+    element1.addEventListener('click', foo); // bubbling
+    element1.addEventListener('click', foo, true); // caputring
+    // You cab change handler to "stop"
+    element2.addEventListener('click', foo);
+    element2.addEventListener('click', foo, true);
+    element3.addEventListener('click', foo);
+    element3.addEventListener('click', foo, true);
+    </script>
+</body>
 
-.element3 {
-  background-color: lightgreen;
-  height: 30px;
-  width: 200px;
-  position: relative;
-  top: 10px;
-  left: 50px;
-}
-        </style>
-
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    </head>
-    <body>
-        
-<h3>Please open Chrome console and click element3</h3>
-<div class="element1">element1
-    <div class="element2">element2
-        <div class="element3">element3</div>
-    </div>     
-</div>
-
-
-
-        <script type="text/javascript">
-
-var element1 = document.getElementsByClassName('element1')[0],
-     element2 = document.getElementsByClassName('element2')[0],
-     element3 = document.getElementsByClassName('element3')[0],
-     foo = function(e) { console.log(this.className); },
-     stop = function(e) { 
-         console.log('stop', this.className); 
-         e.stopPropagation();
-     };
-
- element1.addEventListener('click', foo); // bubbling
- element1.addEventListener('click', foo, true); // caputring
- // You cab change handler to "stop"
- element2.addEventListener('click', foo); 
- element2.addEventListener('click', foo, true);
- element3.addEventListener('click', foo);
- element3.addEventListener('click', foo, true);
-        </script>
-    </body>
 </html>
