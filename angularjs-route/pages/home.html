@@ -21,14 +21,14 @@
     <div class="col-md-12 ">
     <table class="table table-hover">
         <tr>
-            <td><strong>Id</strong></td>
-            <td><strong>Name</strong></td>
-            <td><strong>Product Code</strong></td>
-            <td><strong>Description</strong></td>
-            <td><strong>Cost</strong></td>
+            <td ng-click="orderByField='id'; reverseSort = !reverseSort"><strong>Id</strong></td>
+            <td ng-click="orderByField='productName'; reverseSort = !reverseSort"><strong>Name</strong></td>
+            <td ng-click="orderByField='productCode'; reverseSort = !reverseSort"><strong>Product Code</strong></td>
+            <td ng-click="orderByField='description'; reverseSort = !reverseSort"><strong>Description</strong></td>
+            <td ng-click="orderByField='cost'; reverseSort = !reverseSort"><strong>Cost</strong></td>
             <td><strong>Event</strong></td>
         </tr>
-        <tr ng-repeat="list in data | filter:productFilter">
+        <tr ng-repeat="list in data | orderBy:orderByField:reverseSort">
             <td>{{list.id}}</td>
             <td>{{list.productName}}</td>
             <td>{{list.productCode}}</td>

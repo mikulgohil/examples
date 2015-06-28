@@ -1,10 +1,11 @@
 // create the module and name it myApp
         // also include ngRoute for all our routing needs
     var myApp = angular.module('myApp', ['ngRoute']);
-
+    
     // configure our routes
 
-    myApp.config(function($routeProvider) {
+    myApp.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider) {
+
         $routeProvider
 
             // route for the home page
@@ -24,7 +25,9 @@
                 templateUrl : 'pages/contact.html',
                 controller  : 'contactController'
             });
-    });
+
+            $locationProvider.html5Mode(true);
+    }]);
 
     // create the controller and inject Angular's $scope
     myApp.controller('mainController', function($scope,userService) {
